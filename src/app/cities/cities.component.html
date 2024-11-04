@@ -1,0 +1,121 @@
+<h1 style="text-align: center;">Explore your next Destination</h1>
+<br>
+
+<div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 20px;">
+  <div class="input-group">
+    <input 
+      type="text" 
+      class="form-control" 
+      placeholder="Search cities..." 
+      [(ngModel)]="searchTerm">
+  </div>
+
+  <div>
+    <select class="form-select" [(ngModel)]="selectedType">
+      <option value="All">All Destinations</option>
+      <option value="Cultural/Heritage">Cultural/Heritage</option>
+      <option value="Adventure/Hiking">Adventure/Hiking</option>
+      <option value="Nature">Nature</option>
+      <option value="Family Travel">Family Travel</option>
+    </select>
+  </div>
+
+  <button class="btn btn-success" (click)="openAddModal()">Add Destination</button>
+</div>
+
+<div class="cities-container">
+  <div *ngFor="let city of filteredCities" class="card" style="width: 18rem; margin: 10px;">
+    <img [src]="city.imageUrl" class="card-img-top" alt="{{ city.name }}">
+    <div class="card-body">
+      <h5 class="card-title">{{ city.name }}</h5>
+      <p class="card-text">{{ city.description }}</p>
+      <app-travel-rating [rating]="city.ratings"></app-travel-rating><br>
+      <p *ngIf="city.isPopular" class="badge bg-success">Popular Destination</p><br>
+      <div class="button-group"> <!-- Button group for spacing -->
+        <button (click)="openEditModal(city)" class="button-28" >Edit</button>
+        <button (click)="deleteCity(city.id)" class="button-28" >Delete</button>
+        <button [routerLink]="['/booking', city.name]" class="button-28" >Book</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- Add Destination Modal -->
+<div *ngIf="isAddModalOpen" class="modal" tabindex="-1" style="display: block; background: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Destination</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <label>Name:</label>
+        <input [(ngModel)]="newCity.name" class="form-control mb-2" />
+
+        <label>Description:</label>
+        <textarea [(ngModel)]="newCity.description" class="form-control mb-2"></textarea>
+
+        <label>Type:</label>
+        <select [(ngModel)]="newCity.type" class="form-control mb-2">
+          <option value="Cultural/Heritage">Cultural/Heritage</option>
+          <option value="Adventure/Hiking">Adventure/Hiking</option>
+          <option value="Nature">Nature</option>
+          <option value="Family Travel">Family Travel</option>
+        </select>
+
+        <label>Price:</label>
+        <input [(ngModel)]="newCity.price" class="form-control mb-2" type="number" />
+
+        <label>Ratings:</label>
+        <input [(ngModel)]="newCity.ratings" class="form-control mb-2" type="number" min="1" max="5" />
+
+        <label>Image URL:</label>
+        <input [(ngModel)]="newCity.imageUrl" class="form-control mb-2" type="text" />
+      </div>
+      <div class="modal-footer">
+        <button (click)="addNewCity()" class="btn btn-primary">Add Destination</button>
+        <button (click)="closeModal()" class="btn btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Modal-->
+<div *ngIf="selectedCity" class="modal" tabindex="-1" style="display: block; background: rgba(0, 0, 0, 0.5);">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ editMode ? 'Edit' : 'View' }} City - {{ selectedCity.name }}</h5>
+        <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button>
+      </div>
+      <div class="modal-body">
+        <img [src]="selectedCity.imageUrl" class="card-img-top mb-3" alt="{{ selectedCity.name }}">
+        <div *ngIf="editMode">
+          <label for="cityName">Name:</label>
+          <input id="cityName" [(ngModel)]="selectedCity.name" class="form-control mb-2" />
+          
+          <label for="cityDescription">Description:</label>
+          <textarea id="cityDescription" [(ngModel)]="selectedCity.description" class="form-control mb-2"></textarea>
+          
+          <label for="cityPrice">Price:</label>
+          <input id="cityPrice" [(ngModel)]="selectedCity.price" class="form-control mb-2" type="number" />
+          
+          <label for="cityRating">Ratings:</label>
+          <input id="cityRating" [(ngModel)]="selectedCity.ratings" class="form-control mb-2" type="number" min="0" max="5" step="0.1" />
+        </div>
+        <div *ngIf="!editMode">
+          <p>{{ selectedCity.description }}</p>
+          <p><strong>Price:</strong> {{ selectedCity.price | currency }}</p>
+          <app-travel-rating [rating]="selectedCity.ratings"></app-travel-rating>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="editMode" (click)="saveCityChanges()" class="btn btn-primary">Save Changes</button>
+        <button (click)="closeModal()" class="btn btn-secondary">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

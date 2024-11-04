@@ -1,0 +1,91 @@
+body {
+  font-family: 'Nunito', sans-serif;
+  margin: 0;
+}
+
+.landing-page {
+  position: relative;
+  background-color: black;
+  color: white;
+  padding: 60px 50px;
+}
+
+.bg-img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.5;
+  object-fit: cover;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  max-width: 1320px;
+  margin: 0 auto;
+}
+
+.left-section {
+  flex: 1;
+  padding-right: 20px;
+}
+
+.right-section {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.form-box {
+  background-color: #151617;
+  padding: 35px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+h1.section-head {
+  font-size: 40px;
+}
+
+.section-subhead {
+  color: #b6b6b6;
+  margin: 15px 0 50px;
+}
+
+.icons-container {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.share-icon img {
+  width: 31px;
+  height: 31px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #767676;
+  background-color: #212223;
+  color: white;
+}
+
+textarea {
+  height: 100px;
+}
+
+.submit-btn {
+  background-color: #146132;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;600;700;800&display=swap');

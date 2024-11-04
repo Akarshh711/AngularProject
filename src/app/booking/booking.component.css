@@ -1,0 +1,85 @@
+/* Container for the entire city details */
+.city-details-container {
+  max-width: 700px;
+  margin: 0 auto;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Image container with overlay */
+.image-container {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  overflow: hidden;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Overlay for the city name */
+.city-name-overlay {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 8px 12px;
+  font-size: 1.4em;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+/* Details section styling */
+.details-section {
+  padding: 20px;
+  background-color: #ffffff;
+  color: #333;
+}
+
+.details-section p {
+  margin: 10px 0;
+}
+
+/* Description styling */
+.description {
+  font-size: 1.1em;
+  line-height: 1.6;
+}
+
+/* Price styling */
+.price {
+  font-size: 1.2em;
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* Ratings styling */
+.ratings {
+  font-size: 1.1em;
+  color: #ff9800;
+}
+
+/* Back button styling */
+.back-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 14px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 15px;
+  transition: background-color 0.3s ease;
+  outline: none;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+}

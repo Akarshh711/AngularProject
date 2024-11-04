@@ -1,0 +1,64 @@
+<div class="landing-page">
+  <img class="bg-img" src="https://workik-widget-assets.s3.amazonaws.com/widget-assets/images/clothes-bg.png" alt="Background Image">
+  
+  <div class="container">
+    <div class="left-section">
+      <h1 class="section-head">Contact Us</h1>
+      <p class="section-subhead">We'd love to hear from you. Please fill out the form below or use the contact information provided.</p>
+      <div class="icons-container">
+        <a class="share-icon" href="#"><img class="img" src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-twitter.png" alt="Twitter"></a>
+        <a class="share-icon" href="#"><img class="img" src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-facebook.png" alt="Facebook"></a>
+        <a class="share-icon" href="#"><img class="img" src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-google.png" alt="Google"></a>
+        <a class="share-icon" href="#"><img class="img" src="https://workik-widget-assets.s3.amazonaws.com/Footer1-83/v1/images/Icon-instagram.png" alt="Instagram"></a>
+      </div>
+    </div>
+    
+    <div class="right-section">
+      <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="form-box">
+        <h2>Get a quote</h2>
+        <p>We will get back to you in 24 hours</p>
+        
+        <div class="contact-form">
+
+          <label for="name">Your Name:</label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-input"
+            [ngClass]="{'is-invalid': contactForm.controls['name'].touched && !contactForm.controls['name'].valid}" />
+          <div class="error-message" *ngIf="contactForm.controls['name'].invalid && contactForm.controls['name'].touched">
+            <small *ngIf="contactForm.controls['name'].errors?.['required']">Name is required.</small>
+            <small *ngIf="contactForm.controls['name'].errors?.['minlength']">The name must be at least 4 characters long.</small>
+          </div>
+
+          <label for="email">Your Email:</label>
+          <input
+            type="email"
+            id="email"
+            formControlName="email"
+            class="form-input"
+            [ngClass]="{'is-invalid': contactForm.controls['email'].touched && !contactForm.controls['email'].valid}" />
+          <div class="error-message" *ngIf="contactForm.controls['email'].invalid && contactForm.controls['email'].touched">
+            <small *ngIf="contactForm.controls['email'].errors?.['required']">Please enter your email.</small>
+            <small *ngIf="contactForm.controls['email'].errors?.['email']">Enter a valid email address.</small>
+          </div>
+
+          <label for="message">Your Message:</label>
+          <textarea
+            id="message"
+            rows="5"
+            formControlName="message"
+            class="form-textarea"
+            [ngClass]="{'is-invalid': contactForm.controls['message'].touched && !contactForm.controls['message'].valid}"></textarea>
+          <div class="error-message" *ngIf="contactForm.controls['message'].invalid && contactForm.controls['message'].touched">
+            <small *ngIf="contactForm.controls['message'].errors?.['required']">Message is required.</small>
+            <small *ngIf="contactForm.controls['message'].errors?.['minlength']">Message must be at least 10 characters long.</small>
+          </div>
+
+          <button type="submit" class="submit-btn" [disabled]="contactForm.invalid">Send Message</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

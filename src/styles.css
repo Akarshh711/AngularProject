@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@import "bootstrap/dist/css/bootstrap.css";
+  /* Styles for the Navbar */
+  .navbar {
+    border-bottom: 2px solid #f8f9fa; /* Light color for the bottom border */
+  }
+  
+  /* Active link style */
+  .nav-link.active {
+    border-bottom: 2px solid #f8f9fa; /* Light color for active link bottom border */
+    color: #f8f9fa !important; /* Light color for active link */
+  }

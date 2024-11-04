@@ -1,0 +1,17 @@
+<div *ngIf="cityDetails" class="city-details-container">
+  <!-- Image and city name overlay -->
+  <div class="image-container">
+    <img [src]="cityDetails.imageUrl" alt="{{ cityDetails.name }}">
+    <div class="city-name-overlay">{{ cityDetails.name }}</div>
+  </div>
+
+  <!-- Details Section -->
+  <div class="details-section">
+    <p class="description"><strong>Description:</strong> {{ cityDetails.description }}</p>
+    <p class="price"><strong>Price:</strong> {{ cityDetails.price | currency }}</p>
+    <p class="ratings"><strong>Ratings:</strong> {{ cityDetails.ratings }} / 5</p>
+    
+    <!-- Back Button -->
+    <button class="back-button" (click)="onBack()">Back</button>
+  </div>
+</div>
