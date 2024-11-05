@@ -1,17 +1,47 @@
-<div *ngIf="cityDetails" class="city-details-container">
+<div class="main-background">
+<div *ngIf="cityDetails" >
+  
   <!-- Image and city name overlay -->
-  <div class="image-container">
-    <img [src]="cityDetails.imageUrl" alt="{{ cityDetails.name }}">
-    <div class="city-name-overlay">{{ cityDetails.name }}</div>
+  <div class="booking-container">
+    <!-- Image with centered city name -->
+     
+    <div class="image-container position-relative text-center">
+      <img [src]="cityDetails.imageUrl" class="img-fluid" alt="{{ cityDetails.name }}">
+      <h1 class="overlay">{{ cityDetails.name }}</h1>
+    </div>
+  
+    <!-- Details Section -->
+    <div class="details-section  p-4 mt-4 rounded shadow-sm">
+      <p class="description"><strong>Description:</strong> {{ cityDetails.description }}</p>
+      <p class="price"><strong>Price:</strong> {{ cityDetails.price | currency }}</p>
+      
+      <!-- Ratings section with stars -->
+      <div class="rating-stars">
+        <strong>Ratings: {{ cityDetails.ratings }} / 5 </strong>
+        <app-travel-rating [rating]="cityDetails.ratings"></app-travel-rating>
+      </div>
+  
+      <!-- Back Button -->
+      <button class="btn btn-primary mt-3" (click)="onBack()">Back</button>
+    </div>
+  
+    <!-- Reviews Section -->
+    <div class="reviews-section mt-4 p-4 rounded shadow-sm">
+      <h3>User Reviews</h3>
+      <!-- Loop to display random reviews -->
+      <div class="review mb-3" *ngFor="let review of getRandomReviews()">
+        <div class="review-header d-flex justify-content-between align-items-center">
+          <strong class="d-flex align-items-center">
+            <!-- User emoji -->
+            <span class="me-2" role="img" aria-label="user">👤</span>
+            {{ review.name }}
+          </strong>
+          <app-travel-rating [rating]="review.stars"></app-travel-rating>
+        </div>
+        <p class="review-text mt-1">{{ review.review }}</p>
+        <hr>
+      </div>
+    </div>
   </div>
-
-  <!-- Details Section -->
-  <div class="details-section">
-    <p class="description"><strong>Description:</strong> {{ cityDetails.description }}</p>
-    <p class="price"><strong>Price:</strong> {{ cityDetails.price | currency }}</p>
-    <p class="ratings"><strong>Ratings:</strong> {{ cityDetails.ratings }} / 5</p>
-    
-    <!-- Back Button -->
-    <button class="back-button" (click)="onBack()">Back</button>
-  </div>
+</div>
 </div>
