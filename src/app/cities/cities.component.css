@@ -138,14 +138,14 @@
   border: 2px solid #1A1A1A; /* Default border color */
   border-radius: 10px; /* Increased border-radius for a rounder look */
   box-sizing: border-box;
-  color: #ffffff; /* Default text color */
+  color: #000000; /* Default text color */
   cursor: pointer;
   display: inline-block;
   font-family: Roobert, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 14px; /* Smaller font size for minimal look */
   font-weight: 600;
   line-height: normal;
-  margin: 5px; /* Space between buttons */
+  margin: 1px; /* Space between buttons */
   min-height: 40px; /* Reduced height */
   padding: 10px 20px; /* Reduced padding for a minimal look */
   text-align: center;
@@ -154,14 +154,14 @@
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
-  width: auto; /* Change width to auto for better responsiveness */
+  width: 120%;  /* Change width to auto for better responsiveness */
   will-change: transform;
-   background-color: #1A1A1A; 
+   background-color: #ffffff; 
 }
 
 .button-28:hover {
-  color: #000000; /* Change text color on hover */
-  background-color: #ffffff; /* Change background color on hover */
+  color: #ffffff; /* Change text color on hover */
+  background-color: #000000; /* Change background color on hover */
   box-shadow: rgba(0, 0, 0, 0.25) 0 4px 8px; /* Reduced shadow for minimalism */
   transform: translateY(-1px); /* Slightly reduce the hover effect */
 }
@@ -169,4 +169,42 @@
 .button-28:active {
   box-shadow: none;
   transform: translateY(0);
+}
+
+
+/* CSS */
+.button-22 {
+  align-items: center;
+  width: 100%; /* covers full width */
+  text-align: center;
+  appearance: button;
+  background-color: #101010;
+  border-radius: 8px;
+  border-style: none;
+  box-shadow: rgba(255, 255, 255, 0.26) 0 1px 2px inset;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: "RM Neue",sans-serif;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+  padding: 10px 21px;
+  text-decoration: none;
+  text-transform: none;
+  transition: color .13s ease-in-out,background .13s ease-in-out,opacity .13s ease-in-out,box-shadow .13s ease-in-out;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button-22:active {
+  background-color: #006AE8;
+}
+
+.button-22:hover {
+  background-color: #1C84FF;
 }

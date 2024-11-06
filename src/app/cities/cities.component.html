@@ -20,7 +20,7 @@
     </select>
   </div>
 
-  <button class="btn btn-success" (click)="openAddModal()">Add Destination</button>
+  <button *ngIf="isAdmin" class="btn btn-success" (click)="openAddModal()">Add Destination</button>
 </div>
 
 <div class="cities-container">
@@ -31,11 +31,16 @@
       <p class="card-text">{{ city.description }}</p>
       <app-travel-rating [rating]="city.ratings"></app-travel-rating><br>
       <p *ngIf="city.isPopular" class="badge bg-success">Popular Destination</p><br>
-      <div class="button-group"> <!-- Button group for spacing -->
+
+      <button [routerLink]="['/booking', city.name]" class="button-22" >Book</button><br>
+      <div class="button-group" *ngIf="isAdmin"> <!-- Button group for spacing -->
+        
         <button (click)="openEditModal(city)" class="button-28" >Edit</button>
         <button (click)="deleteCity(city.id)" class="button-28" >Delete</button>
-        <button [routerLink]="['/booking', city.name]" class="button-28" >Book</button>
       </div>
+       
+        
+      
     </div>
   </div>
 </div>

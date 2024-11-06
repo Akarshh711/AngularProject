@@ -1,10 +1,11 @@
-import { Component, OnInit, OnChanges, OnDestroy, SimpleChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, OnDestroy, SimpleChanges, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ICity } from './cities.model';
 import { FormsModule } from '@angular/forms';
 import { TravelRatingComponent } from '../travel-rating/travel-rating.component';
 import { CitiesService } from './cities.service';
 import { RouterLink } from '@angular/router';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'app-cities',
@@ -32,8 +33,9 @@ export class CitiesComponent implements OnInit, OnChanges, OnDestroy {
     imageUrl: '',
     isPopular: false
   };
+  isAdmin: boolean = false;
 
-  constructor(private citiesService: CitiesService) {
+  constructor(@Inject(PLATFORM_ID) private platformId: any, private citiesService: CitiesService) {
     console.log('CitiesComponent Constructor');
   }
 
@@ -59,6 +61,11 @@ export class CitiesComponent implements OnInit, OnChanges, OnDestroy {
     console.log('CitiesComponent Initialized');
     this.cities = this.citiesService.getCities();
     this.filterCities();
+
+    if (isPlatformBrowser(this.platformId)) {
+      const role = localStorage.getItem('userRole');
+      this.isAdmin = role === 'admin';
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {
